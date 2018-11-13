@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "test_artifactId",
+                "projectName": "test_artifactId",
+                "workingDirectory": "c:\\Users\\11054\\WorkSpace\\maventest\\test_artifactId",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "test_artifactId",
+                "projectName": "test_artifactId",
+                "workingDirectory": "c:\\Users\\11054\\WorkSpace\\maventest\\test_artifactId",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
