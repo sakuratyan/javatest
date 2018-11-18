@@ -8,7 +8,7 @@
             "console": "internalConsole",
             "stopOnEntry": false,
             "mainClass": "com.test_groupId.defaultpack.App",
-            "args": "",
+            "args": "aaa bbb bbb aaa aaa cc",
             "projectName": "test_artifactId"
         }
     ]
