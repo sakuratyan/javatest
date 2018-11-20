@@ -2,7 +2,6 @@ package com.test_groupId.frequentlyusedclasses;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.annotation.Retention;
 
 /**
  * TestFile

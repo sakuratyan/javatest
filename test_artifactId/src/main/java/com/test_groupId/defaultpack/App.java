@@ -1,33 +1,45 @@
 package com.test_groupId.defaultpack;
 
-import com.test_groupId.thread.*;
+import java.io.*;
 
-/**
- * Hello world!
- *
- */
+//import com.test_groupId.thread.*;
+import com.test_groupId.testnet.*;
 
- 
 public class App {
 
-    //enum Aenumclass  {red,s,st};
+    // enum Aenumclass {red,s,st};
 
-
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         System.out.println("Hello World!");
+        // redsysout("redsysout.txt");
+        new TestUDPreceive();
 
-        new TestThread();
-        
-        //TestFile f = new TestFile("C:\\Users\\11054\\WOrkSpace");
+        // TestFile f = new TestFile("C:\\Users\\11054\\WOrkSpace");
 
-        //String[] s = { "123", "12", "2", "4", "12321" };
+        // String[] s = { "123", "12", "2", "4", "12321" };
 
         // TestChain t= new TestChain();
         // TestCount c= new TestCount(500);
         // Chainsz sz = new Chainsz(500);
         // TestBinarySearch b = new TestBinarySearch();
         // System.out.println("\u00df \u0053 \u0053 \u0069 \u0130 \u0131 \u0049");
-        //TestString t = new TestString(1);
+        // TestString t = new TestString(1);
+    }
+
+    static void redsysout(String path) {
+        // OutputStreamWriter osw = new OutputStreamWriter(System.out);
+        try {
+            PrintStream ps = new PrintStream(new File(path));
+            if (ps != null) {
+                System.setOut(ps);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("hello in " + path);
     }
 
     public static String byteToHex(byte b) {

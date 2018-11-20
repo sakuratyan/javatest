@@ -23,7 +23,6 @@ public class TestFileWriter {
             }
             fw.close();
         } catch (IOException e) {
-            // TODO: handle exception
             e.printStackTrace();
             System.out.println("写入错误:" + path);
         }
@@ -39,14 +38,14 @@ public class TestFileWriter {
             while ((c = fr.read()) != -1) {
                 System.out.print((char) c);
             }
+            fr.close();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
+        //fr.close();
+        
         return 0;
     }
 
@@ -74,10 +73,8 @@ public class TestFileWriter {
 
             bis.close();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -92,10 +89,8 @@ public class TestFileWriter {
             }
             fos.close();
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return 0;

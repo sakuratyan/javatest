@@ -13,6 +13,9 @@ public class MyException extends Exception{
         super(message);
         this.id = id;
     }
+    public MyException(){
+        testfun3(0);
+    }
 
     public int getId(){
         return id;
@@ -34,8 +37,8 @@ public class MyException extends Exception{
             testfun2(num);
             System.out.println("public void testfun3(int num)");
         } catch (Exception e) {
-            //TODO: handle exception
             e.printStackTrace();
         }
+        System.out.println("test");
     }
 }
