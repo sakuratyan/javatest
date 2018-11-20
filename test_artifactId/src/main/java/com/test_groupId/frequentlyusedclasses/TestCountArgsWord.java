@@ -3,7 +3,7 @@ package com.test_groupId.frequentlyusedclasses;
 import java.util.*;
 
 /**
- * TestCountArgsWord
+ * generic type
  */
 public class TestCountArgsWord {
 
