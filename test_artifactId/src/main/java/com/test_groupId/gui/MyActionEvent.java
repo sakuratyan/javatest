@@ -1,61 +1,78 @@
 package com.test_groupId.gui;
 
-import java.awt.*;
-
 /**
- * I cant do it!
- * MyActionEvent
- * 
+ * I cant do it! MyActionEvent (⊙﹏⊙)
  */
 public class MyActionEvent {
 
     public MyActionEvent() {
-        Frame f = new Frame("MyActionEvent ");
-        MyButton b = new MyButton("ye me te");
-
-        f.add(b);
-        f.pack();
-        f.setVisible(true);
+        T t = new T();
+        t.add(new MyMonitor());
     }
 }
 
-class MyButton extends Button {
-    static boolean flasg = false;
-    MyButton(String s) {
-        super(s);
+class T {
+    MyButton m;
+    Thread t;
+
+    T() {
+        m = new MyButton();
+        t = new Thread(m);
+        t.start();
     }
 
-    void addMyActionListener(MyActionListener m) {
-        
+    void add(MyActionListener a) {
+        m.add(a);
     }
 }
 
-class Manager implements Runnable{
+class MyButton /* extends MyAction */ implements Runnable {
+    MyActionListener m;
+    MyActionListener[] arrm = new MyActionListener[10];
+    int i = 0;
 
-    static MyActionListener[] action = null;
-
-    Manager(){
-
-    }
-    public void run(){
-
+    public void run() {
         while (true) {
-            check();
-            //action[0].myActionPerformed();
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            String actionevent = "actionevent";
+            System.out.println(actionevent);
+            // myActionPerformed();
+            if (arrm.length == 0) {
+                new MyAction().myActionPerformed("myActionPerformed:null");
+                ;
+            } else {
+                for (MyActionListener var : arrm) {
+                    var.myActionPerformed(actionevent);
+                }
+            }
         }
     }
-    MyActionListener check(){
-        return null;
+
+    void add(MyActionListener a) {
+        arrm[i++] = a;
+    }
+
+}
+
+interface MyActionListener {
+    static int i = 0;
+
+    void myActionPerformed(String actionevent);
+}
+
+class MyAction implements MyActionListener {
+    public void myActionPerformed(String actionevent) {
+        System.out.println("MyActionListener;null");
+
     }
 }
 
-
-interface MyActionListener{
-    static int i = 0;
-    void myActionPerformed();
-}
-class MyMonitor implements MyActionListener{
-    public void myActionPerformed() {
-        System.out.println("Press");
+class MyMonitor implements MyActionListener {
+    public void myActionPerformed(String actionevent) {
+        System.out.println("MyMonitor:myActionPerformed");
     }
 }

@@ -12,6 +12,7 @@ public class TestActionEvent {
         Button b = new Button("ye me te");
         Monitor m = new Monitor();
         b.addActionListener(m);
+        b.addActionListener(m);
         f.add(b);
         f.pack();
         f.setVisible(true);
@@ -22,5 +23,8 @@ public class TestActionEvent {
 class Monitor implements ActionListener{
     public void actionPerformed(ActionEvent e){
         System.out.println("Press");
+        System.out.println(e);
+        System.out.println(e.getActionCommand());
+        System.out.println(e.paramString());
     }
 }
