@@ -1,9 +1,10 @@
 package com.test_groupId.defaultpack;
 
 import java.io.*;
-
+//import com.test_groupId.gui.*;
+import com.test_groupId.frequentlyusedclasses.*;
 //import com.test_groupId.thread.*;
-import com.test_groupId.testnet.*;
+//import com.test_groupId.testnet.*;
 
 public class App {
 
@@ -12,7 +13,7 @@ public class App {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         // redsysout("redsysout.txt");
-        new TestUDPreceive();
+        new TestObjectIO();
 
         // TestFile f = new TestFile("C:\\Users\\11054\\WOrkSpace");
 
