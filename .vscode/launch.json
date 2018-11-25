@@ -1,5 +1,6 @@
 {
     "configurations": [
+        
         {
             "type": "java",
             "name": "CodeLens (Launch) - App",
@@ -9,7 +10,8 @@
             "stopOnEntry": false,
             "mainClass": "com.test_groupId.defaultpack.App",
             "args": "aaa bbb bbb aaa aaa cc",
-            "projectName": "test_artifactId"
+            "projectName": "test_artifactId",
+            "vmArgs": ""//"-verbose:class"
         }
     ]
 }
