@@ -3,7 +3,7 @@ package com.test_groupId.defaultpack;
 import java.io.*;
 //import com.test_groupId.gui.*;
 import com.reflection.*;
-import com.test_groupId.genrictype.*;
+import com.test_groupId.teststring.*;
 import com.testraytrace.*;
 
 //import com.test_groupId.frequentlyusedclasses.*;
@@ -17,7 +17,7 @@ public class App {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         // redsysout("redsysout.txt");
-        new PrintPPM("TestPPM.ppm");
+        new TestPrintString();
 
         // TestFile f = new TestFile("C:\\Users\\11054\\WOrkSpace");
 
