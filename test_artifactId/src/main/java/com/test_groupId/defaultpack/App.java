@@ -14,10 +14,10 @@ public class App {
 
     // enum Aenumclass {red,s,st};
 
-    public static void main(String[] args) {
+    public static void main (String[] args) throws Exception {
         System.out.println("Hello World!");
         // redsysout("redsysout.txt");
-        new TestPrintString();
+        new TestReflection();
 
         // TestFile f = new TestFile("C:\\Users\\11054\\WOrkSpace");
 
