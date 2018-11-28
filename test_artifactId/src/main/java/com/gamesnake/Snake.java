@@ -28,10 +28,9 @@ public class Snake {
         }
     }
 
-    ArrayList<Point> sl = new ArrayList<>();
+    ArrayList<Node> sl = new ArrayList<>();
 
-    Snake(Point p) {
-        sl.add(p);
+    Snake(Point p, Color c) {
     }
 
     int eat(Egg g) {
