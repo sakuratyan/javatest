@@ -50,6 +50,10 @@ public class Yard extends Frame implements Grid {
         }
 
         // snake
+        Snake snake = new Snake(new Point(1,1), Color.green, 5);
+        snake.draw(g);
+
+
 
         g.setColor(oc);
     }

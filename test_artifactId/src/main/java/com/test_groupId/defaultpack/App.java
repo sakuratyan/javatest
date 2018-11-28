@@ -5,7 +5,7 @@ import java.io.*;
 import com.gamesnake.*;
 import com.test_groupId.teststring.*;
 import com.testraytrace.*;
-import com.test_groupId.innerclass.*;
+//import com.test_groupId.innerclass.*;
 
 //import com.test_groupId.frequentlyusedclasses.*;
 //import com.test_groupId.thread.*;
@@ -19,7 +19,7 @@ public class App {
         System.out.println("Hello World!");
         // redsysout("redsysout.txt");
         // new GameSnake().launch();
-        new TestOuter2();
+        new Yard().launch();
 
         // TestFile f = new TestFile("C:\\Users\\11054\\WOrkSpace");
 

@@ -30,7 +30,12 @@ public class Snake {
 
     ArrayList<Node> sl = new ArrayList<>();
 
-    Snake(Point p, Color c) {
+    Snake(Point p, Color c, int length) {
+        sl.add(new Node(p, c));
+        while (--length != 0) {
+
+            sl.add(new Node(new Point(p.x + length, p.y), c.darker()));
+        }
     }
 
     int eat(Egg g) {
@@ -38,8 +43,10 @@ public class Snake {
         return 0;
     }
 
-    ArrayList<Point> getLocation() {
-        return sl;
+    void draw(Graphics g) {
+        for (Node v : sl) {
+            v.draw(g);
+        }
     }
 
     int getlength() {
