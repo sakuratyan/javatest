@@ -2,7 +2,7 @@ package com.test_groupId.defaultpack;
 
 import java.io.*;
 //import com.test_groupId.gui.*;
-import com.reflection.*;
+import com.gamesnake.*;
 import com.test_groupId.teststring.*;
 import com.testraytrace.*;
 
@@ -17,7 +17,8 @@ public class App {
     public static void main (String[] args) throws Exception {
         System.out.println("Hello World!");
         // redsysout("redsysout.txt");
-        new TestReflection();
+        // new GameSnake().launch();
+        new GameSnake().launch();;
 
         // TestFile f = new TestFile("C:\\Users\\11054\\WOrkSpace");
 
