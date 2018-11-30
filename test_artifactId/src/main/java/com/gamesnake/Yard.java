@@ -20,6 +20,9 @@ interface Grid {
  */
 public class Yard extends Frame implements Grid {
 
+    Egg egg = new Egg();
+    Snake snake = new Snake(this,new Point(1,1), Color.green, 5,egg);
+
     public void launch() {
         this.setLocation(0, 0);
         this.setSize((COLS + 2) * BLOCK_SIZE, (ROWS + 3) * BLOCK_SIZE);
@@ -29,6 +32,16 @@ public class Yard extends Frame implements Grid {
                 System.exit(0);
             }
         });
+
+        this.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                snake.changeDire(e.getKeyCode());
+                // repaint();
+                // System.out.println(e);
+            }
+        });
+
+        new Thread(snake).start();
         this.setVisible(true);
     }
 
@@ -49,10 +62,12 @@ public class Yard extends Frame implements Grid {
                     GRID_OFFSET.y + ROWS * BLOCK_SIZE);
         }
 
+        //egg
+        egg.draw(g);
         // snake
-        Snake snake = new Snake(new Point(1,1), Color.green, 5);
         snake.draw(g);
 
+        
 
 
         g.setColor(oc);
