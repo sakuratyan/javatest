@@ -5,7 +5,6 @@ import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.security.Provider;
 import java.util.ArrayList;
 
 /**
@@ -56,7 +55,7 @@ public class Snake implements Runnable, Grid {
 
         if (sl.get(0).p.equals(g.e.p)) {
             addTail(g);
-            g.randomBir();
+            g.randomBir(this);
         }
         return 0;
     }
@@ -157,6 +156,7 @@ public class Snake implements Runnable, Grid {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            AiSnake.askPath(this);
             this.forward();
             this.yard.repaint();
         }

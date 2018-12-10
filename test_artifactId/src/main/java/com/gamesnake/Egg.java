@@ -19,6 +19,20 @@ public class Egg implements Grid {
         setPoint(p);
     }
 
+    void randomBir(Snake s){
+        randomBir();
+        while (true) {
+            for (Node vNode : s.sl) {
+                if (this.e.p.equals(vNode.p)) {
+                    randomBir();
+                    continue;
+                }
+            }
+            break;
+        }
+        
+    }
+
     void setPoint(Point p) {
         e.p = p;
     }
