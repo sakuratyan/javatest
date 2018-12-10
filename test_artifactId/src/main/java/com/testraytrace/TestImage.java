@@ -1,5 +1,6 @@
 package com.testraytrace;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -32,6 +33,10 @@ public class TestImage extends Frame {
         g.drawImage(bi, 0, 0, IM_H, IM_W, null);
     }
 
+    void adjBI(int x,int y, Color c){
+        bi.setRGB(x, y, c.getRGB());
+        // bi.getRGB(x, y);
+    }
 
     // void saveImage(String s) {
     //     File file = new File("c:\\javaPic.png");

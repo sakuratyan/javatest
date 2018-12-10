@@ -25,7 +25,7 @@ TEST.java
 #.vscode/
 test_artifactId/target/
 test_artifactId/src/test/
-
+.vscode/
 # ignore doc/notes.txt, but not doc/server/arch.txt
 doc/*.txt
 
