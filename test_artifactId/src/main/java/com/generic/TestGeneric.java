@@ -1,15 +1,15 @@
 package com.generic;
 
-import java.io.StringWriter;
 import java.util.ArrayList;
 
 /**
  * TestGeneric
  */
-public class TestGeneric {
+public class TestGeneric extends Object {
 
     public static void main(String[] args) {
         ArrayList<String> ls = new ArrayList<String>();
+
         System.out.println(ls);
 
         System.out.println(ls.getClass());

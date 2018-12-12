@@ -6,7 +6,7 @@ import java.io.*;
 //import com.test_groupId.gui.*;
 import com.gamesnake.*;
 import com.test_groupId.teststring.*;
-import com.testraytrace.*;
+import com.testraytrace.ch3.*;
 import com.algorithm.*;
 //import com.test_groupId.innerclass.*;
 
@@ -23,7 +23,7 @@ public class App {
         // redsysout("redsysout.txt");
         // new GameSnake().launch();
         // new Yard().launch();
-        new TestImage().launch();;
+        new Display().launch();
 
         // TestFile f = new TestFile("C:\\Users\\11054\\WOrkSpace");
 
