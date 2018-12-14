@@ -2,7 +2,6 @@ package com.testraytrace.ch1;
 
 import java.awt.Frame;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -13,10 +12,10 @@ import javax.imageio.ImageIO;
  * TestImage
  */
 public class MyImage extends Frame {
-    public final int HEIGHT = 600;
-    public final int WIDTH = 600;
-    public final int IM_W = HEIGHT;
-    public final int IM_H = WIDTH;
+    public final int HEIGHT = 720;
+    public final int WIDTH = 1080;
+    public final int IM_W = WIDTH;
+    public final int IM_H = HEIGHT;
     /*
      * 自左上角开始自左向右。计数惯例是0开始
      */
@@ -35,13 +34,13 @@ public class MyImage extends Frame {
     public void launch() {
         myView();
         System.out.println("over");
-        setBounds(100, 100, HEIGHT, WIDTH);
+        setBounds(100, 100, WIDTH, HEIGHT);
         this.setTitle("IMG");
         setVisible(true);
     }
 
     public void paint(Graphics g) {
-        g.drawImage(bi, 0, 0, IM_H, IM_W, null);
+        g.drawImage(bi, 0, 0, IM_W, IM_H, null);
     }
 
     public void setRGB(int x, int y, int c) {
@@ -50,29 +49,29 @@ public class MyImage extends Frame {
     }
 
     public int setColor(int r, int g, int b) {
-        return setColor2(r, g, b, 0xFF);
+        return setColor(r, g, b, 0xFF);
     }
 
-    public int setColor2(int r, int g, int b, int a) {
+    public int setColor(int r, int g, int b, int a) {
         return ((a & 0xFF) << 24) | ((r & 0xFF) << 16) | ((g & 0xFF) << 8) | ((b & 0xFF) << 0);
     }
 
     public void myView() {
-        // int c = 0;
         int r, g, b;
-        for (int i = 0; i < bi.getHeight(); i++) {
-            for (int j = 0; j < bi.getWidth(); j++) {
-                r = (int) (i * 255.0 / HEIGHT + 0.5);
-                g = (int) (j * 255.0 / WIDTH + 0.5);
-                // b = (r + g) / 2;
+        for (int j = this.IM_H - 1; j >= 0; j--) {
+            for (int i = 0; i < this.IM_W; i++) {
+                r = (int) (i * 255.0 / IM_W + 0.5);
+                g = (int) (j * 255.0 / IM_H + 0.5);
+                // b = (int)(0.2*255+0.5);
                 b = 0;
-                setRGB(i, j, setColor(r, g, b));
+                setRGB(i, this.IM_H - j - 1, setColor(r, g, b));
             }
         }
+        saveImage("ch1.0.png");
     }
 
     protected void saveImage(String s) {
-        File file = new File("test_artifactId/src/main/java/com/testraytrace/.image",s);
+        File file = new File("test_artifactId/src/main/java/com/testraytrace/.image", s);
 
         try {
             if (file.exists()) {
@@ -80,8 +79,8 @@ public class MyImage extends Frame {
                 file.createNewFile();
             }
             ImageIO.write(bi, "png", file);
-            System.out.println(file.getPath()+" saved");
-            // System.out.println(file.getName()+" saved");
+            // System.out.println(file.getPath()+" saved");
+            System.out.println(file.getName() + " saved");
         } catch (IOException e) {
             e.printStackTrace();
         }

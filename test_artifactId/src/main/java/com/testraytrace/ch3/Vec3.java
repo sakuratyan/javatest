@@ -104,4 +104,9 @@ public class Vec3 {
                 a.z() * b.x() - a.x() * b.z(),
                 a.x() * b.y() - a.y() * b.x());
     }
+
+    @Override
+    public String toString() {
+        return "x:"+this.x()+" y:"+this.y()+" z:"+this.z();
+    }
 }
