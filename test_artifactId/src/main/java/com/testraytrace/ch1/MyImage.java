@@ -1,7 +1,7 @@
 package com.testraytrace.ch1;
 
-import java.awt.Frame;
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,24 +12,27 @@ import javax.imageio.ImageIO;
  * TestImage
  */
 public class MyImage extends Frame {
-    public final int HEIGHT = 720;
-    public final int WIDTH = 1080;
-    public final int IM_W = WIDTH;
-    public final int IM_H = HEIGHT;
+    public int HEIGHT = 1000;
+    public int WIDTH = 2000;
+    public int IM_W = WIDTH;
+    public int IM_H = HEIGHT;
     /*
      * 自左上角开始自左向右。计数惯例是0开始
      */
+    protected String imgName;
     public BufferedImage bi = new BufferedImage(IM_W, IM_H, BufferedImage.TYPE_INT_ARGB);
 
     public static void main(String[] args) {
-        new MyImage().launch();
+        new MyImage("ch1.png").launch();
     }
 
-    // public TestImage() {
-    // System.out.println(bi.getHeight());
-    // System.out.println(bi.getWidth());
+    protected MyImage() {
+        this.imgName = "default.png";
+    }
 
-    // }
+    protected MyImage(String imgName) {
+        this.imgName = imgName;
+    }
 
     public void launch() {
         myView();
@@ -37,6 +40,14 @@ public class MyImage extends Frame {
         setBounds(100, 100, WIDTH, HEIGHT);
         this.setTitle("IMG");
         setVisible(true);
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                saveImage(imgName);
+                System.exit(0);
+            }
+        });
     }
 
     public void paint(Graphics g) {
@@ -67,7 +78,6 @@ public class MyImage extends Frame {
                 setRGB(i, this.IM_H - j - 1, setColor(r, g, b));
             }
         }
-        saveImage("ch1.0.png");
     }
 
     protected void saveImage(String s) {

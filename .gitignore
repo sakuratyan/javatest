@@ -23,6 +23,10 @@ TEST.java
 
 # ignore all files in the build/ directory
 #.vscode/
+
+# # 测试图片是椭圆
+test_artifactId/src/main/java/com/testraytrace/ch4/testSphere 
+
 test_artifactId/target/
 test_artifactId/src/test/
 .vscode/

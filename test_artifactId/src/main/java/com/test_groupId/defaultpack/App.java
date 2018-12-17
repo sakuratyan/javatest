@@ -2,6 +2,9 @@ package com.test_groupId.defaultpack;
 
 import java.io.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 //import com.test_groupId.gui.*;
 import com.gamesnake.*;
@@ -23,8 +26,7 @@ public class App {
         // redsysout("redsysout.txt");
         // new GameSnake().launch();
         // new Yard().launch();
-        new Display().launch();
-
+        System.out.println(new SimpleDateFormat().format(new Date().getTime()));
         // TestFile f = new TestFile("C:\\Users\\11054\\WOrkSpace");
 
         // String[] s = { "123", "12", "2", "4", "12321" };
