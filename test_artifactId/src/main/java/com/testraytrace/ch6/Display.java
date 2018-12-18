@@ -10,7 +10,9 @@ import com.testraytrace.ch1.*;
 public class Display extends MyImage {
 
     public static void main(String[] args) {
+        long o = new Date().getTime();
         new Display("ch6.png").launch();
+        System.out.println(new Date().getTime()-o);
     }
 
     @Override
@@ -24,23 +26,25 @@ public class Display extends MyImage {
 
         for (int j = this.IM_H - 1; j >= 0; j--) {
             for (int i = 0; i < this.IM_W; i++) {
-                // Vec3 col = new Vec3(0, 0, 0); // 初始化该点的像素
-                // for (int s = 0; s < ns; s++) {
-                //     float u = (float) (i + Math.random()) / (float) this.IM_H; // 添加随机数 消锯齿
-                //     float v = (float) (j + Math.random()) / (float) this.IM_W;
-                //     Ray r = camera.GetRay(u, v); // 根据uv得出光线向量
-                //     col = col.Add(camera.color(r)); // 根据每个像素点上色 累加
-                // }
-                // col = col.Scale(1.0f / (float) ns); // 除以采样次数 求平均
-                float v = (float) j / (float) IM_H; // 竖直 不过是从左上角开始的，用的时候取 1-v
-                float u = (float) i / (float) IM_W; // 水平
-                Ray r = camera.GetRay(u, v); // 根据uv得出光线向量
-                Vec3 color  = camera.color(r);
+                Vec3 color = new Vec3(0, 0, 0); // 初始化该点的像素
+                for (int s = 0; s < ns; s++) {
+                    float u = (float) (i + Math.random()) / (float) this.IM_W; // 添加随机数 消锯齿Math.random() <-- 0
+                    float v = (float) (j + Math.random()) / (float) this.IM_H; 
+                    Ray r = camera.GetRay(u, v); // 根据uv得出光线向量
+                    color = color.Add(camera.color(r)); // 根据每个像素点上色 累加
+                }
+                color = color.Scale(1.0f / (float) ns); // 除以采样次数 求平均
+                // float v = (float) j / (float) IM_H; // 竖直 不过是从左上角开始的，用的时候取 1-v
+                // float u = (float) i / (float) IM_W; // 水平
+                // Ray r = camera.GetRay(u, v); // 根据uv得出光线向量
+                // Vec3 color = camera.color(r);
                 int ir = (int) (color.x() * 255.0 + 0.5);
                 int ig = (int) (color.y() * 255.0 + 0.5);
                 int ib = (int) (color.z() * 255.0 + 0.5);
                 setRGB(i, this.IM_H - j - 1, setColor(ir, ig, ib));
             }
+            // this.value = (int) (100.0 * (this.IM_H - j) / this.IM_H);
+            this.value = 100;
         }
     }
 

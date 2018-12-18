@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 /**
  * TestImage
  */
-public class MyImage extends Frame {
+public class MyImage extends Frame implements Runnable {
     public int HEIGHT = 1000;
     public int WIDTH = 2000;
     public int IM_W = WIDTH;
@@ -28,6 +28,8 @@ public class MyImage extends Frame {
 
     protected MyImage() {
         this.imgName = "default.png";
+        // new Thread(new ConsoleProgress(this)).start();
+        new Thread(new MyImage(this)).start();
     }
 
     protected MyImage(String imgName) {
@@ -35,11 +37,11 @@ public class MyImage extends Frame {
     }
 
     public void launch() {
-        myView();
-        System.out.println("over");
+        // System.out.println("over");
         setBounds(100, 100, WIDTH, HEIGHT);
         this.setTitle("IMG");
         setVisible(true);
+        myView();
 
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -96,4 +98,25 @@ public class MyImage extends Frame {
         }
     }
 
+    /**
+     * 默认是1-100之间的数字
+     */
+    protected long value = 0;
+    MyImage mImage;
+
+    MyImage(MyImage mImage) {
+        this.mImage = mImage;
+    }
+
+    @Override
+    public void run() {
+        do {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            mImage.repaint();
+        } while (this.value < 100);
+    }
 }
