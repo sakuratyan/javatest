@@ -1,26 +1,25 @@
-package com.testraytrace.ch7;
+package com.testraytrace.ch8;
 
-import com.testraytrace.ch6.*;
-import com.testraytrace.ch1.*;
+import com.testraytrace.ch1.MyImage;
 
 /**
- * DIsplay
+ * Display
  */
 public class Display extends MyImage {
 
     public static void main(String[] args) {
         long o = System.currentTimeMillis();
-        new Display("ch7.png").launch();
-        System.out.println("total time: "+(System.currentTimeMillis()-o));
+        new Display("ch8.png").launch();
 
+        System.out.println("total time: "+(System.currentTimeMillis()-o));
     }
 
     @Override
     public void myView() {
         HitableList world = new HitableList();
         Camera camera = new Camera(world);
-        world.addElements(new Sphere(new Vec3(0.0f, 0.0f, -1.0f), 0.5f));
-        world.addElements(new Sphere(new Vec3(0.0f, -100.5f, -1.0f), 100f));
+        world.addElements(new Sphere(new Vec3(0.0f, 0.0f, -1.0f), 0.5f, new Metal(new Vec3(0.8f, 0.8f, 0.8f), 0.0f)));
+        world.addElements(new Sphere(new Vec3(0.0f, -100.5f, -1.0f), 100f, new Metal(new Vec3(0.8f, 0.6f, 0.2f), 0.1f)));
 
         int ns = 100; // 采样次数 消锯齿
         for (int j = this.IM_H - 1; j >= 0; j--) {
@@ -30,7 +29,7 @@ public class Display extends MyImage {
                     float u = (float) (i + Math.random()) / (float) this.IM_W; // 添加随机数 消锯齿Math.random() <-- 0
                     float v = (float) (j + Math.random()) / (float) this.IM_H;
                     Ray r = camera.GetRay(u, v); // 根据uv得出光线向量
-                    color = color.Add(this.color(r,world)); // 根据每个像素点上色 累加
+                    color = color.Add(this.color(r,world,1)); // 根据每个像素点上色 累加
                 }
                 color = color.Scale(1.0f / (float) ns); // 除以采样次数 求平均
                 //gamma矫正
@@ -44,29 +43,21 @@ public class Display extends MyImage {
             // this.value = (int) (100.0 * (this.IM_H - j) / this.IM_H);
             this.value = 100;
         }
+
     }
 
-    public Vec3 randomInUnitSphere(){
-        Vec3 p;
-        do{
-            //2倍单位立方体正好内切单位求。
-            //CS = 2*randomPoint - (1,1,1)
-            p =new Vec3((float)(Math.random()), (float)(Math.random()), (float)(Math.random())).Scale(2.0f).Subtract(new Vec3(1.0f, 1.0f, 1.0f));
-        }while (p.dot(p) >= 1.0f);
-        return p;
-    }
-
-    public Vec3 color(Ray r, Hitable world)
+    public Vec3 color(Ray r, HitableList world, int depth)
     {
         HitRecord rec = new HitRecord();
-        if(world.hit(r, 0.0f, Float.MAX_VALUE, rec)){
-            //P为撞击点,PC是撞击点单位法向量
-            //Point S = P + PC + CS 
-            Vec3 target = rec.p.Add(rec.normal.normalize()).Add(randomInUnitSphere());
-            //递归，每次吸收50%的能量
-            //最终，球面上的颜色是多次反射后的，多次衰减的背景色。
-            return color(new Ray(rec.p, target.Subtract(rec.p)), world).Scale(0.5f);
-
+        if(world.hit(r, 0.001f, Float.MAX_VALUE, rec)){
+            //任何物体有撞击点
+            Wrapper wrapper = new Wrapper();
+            if(depth < 50 && rec.matPtr.scatter(r, rec, wrapper)){
+                return color(wrapper.scattered, world, depth+1).Multiply(wrapper.attenuation);
+            }else{
+                // System.out.println("真能反射那么多次吗！");真有！
+                return new Vec3(0,0,0);
+            }
         }
         else{
             //没有撞击点，绘制背景
@@ -74,7 +65,6 @@ public class Display extends MyImage {
             float t = 0.5f * (unit_dir.y() + 1.0f);     //原本范围为[-1,1]调整为[0,1]
             return new Vec3(1.0f, 1.0f, 1.0f).Scale(1.0f - t).Add(new Vec3(0.5f, 0.7f, 1.0f).Scale(t));
             //返回背景(1.0-t)*vec3(1.0, 1.0, 1.0) + t*vec3(0.5, 0.7, 1.0); 沿着y轴线性插值，返回的颜色介于白色与天蓝色之间
-            //return new Vec3(1,0,0);
         }
     }
 

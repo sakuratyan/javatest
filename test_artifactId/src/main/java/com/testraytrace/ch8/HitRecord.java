@@ -1,8 +1,8 @@
-package com.testraytrace.ch6;
+package com.testraytrace.ch8;
 
 
 /**
- * HitRecord
+ * 记录撞击点的时间，坐标，单位法向量，材质
  */
 public class HitRecord {
     public float t; // 相撞的时间
@@ -14,6 +14,11 @@ public class HitRecord {
      * 撞击点的单位法向量
      */
     public Vec3 normal; 
+
+    /**
+     * 撞击的材质
+     */
+    public Material matPtr; 
 
     public HitRecord() {
         // t = 0;
