@@ -3,14 +3,18 @@ package com.testraytrace.ch9;
 public abstract class Material {
     /**
      * 材料的反射率
+     *  Vec3 xyz [0f,1f]区间
+     * 其他的范围太魔幻了
+     * 默认全反射
      */
-    Vec3 albedo; // 反射率
+    Vec3 albedo  = new Vec3(1,1,1); // 反射率
     /**
      * 镜面的模糊程度，影响镜面反射方向
+     * @区间 [0f,1f]
      */
     float fuzz; // 镜面模糊
 
-    public abstract boolean scatter(Ray r, HitRecord rec, Wrapper wrapper);
+    public abstract boolean scatter(Ray r, HitRecord rec);
 
     /**
      * 生成一个单位球内的随机坐标

@@ -19,6 +19,23 @@ public class HitRecord {
      * 撞击的材质
      */
     public Material matPtr; 
+    /**
+     * 反射光线
+     */
+    public Ray reflectedRay;
+    /**
+     * 折射光线
+     */
+    public Ray refractedRay;
+    /**
+     * 折射光线向量
+     * 是否有折射光线
+     */
+    public Vec3 refractedVec3;
+    /**
+     * 折射？入射 2选1
+     */
+    public Ray ref2Ray;
 
     public HitRecord() {
         // t = 0;
