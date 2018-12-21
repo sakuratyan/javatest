@@ -17,13 +17,13 @@ public class Display extends com.testraytrace.ch9.Display {
     public void myView() {
         HitableList world = new HitableList();
 
-        world.addElements(new Sphere(new Vec3(0.0f, 0.0f, -1.0f), 0.5f, new Metal(new Vec3(0.9f, 0.9f, 0.9f), 0.0f)));
-        world.addElements(
-                new Sphere(new Vec3(0.0f, -100.5f, -1.0f), 100f, new Metal(new Vec3(0.8f, 0.6f, 0.2f), 0.9f)));
-        world.addElements(new Sphere(new Vec3(-1.5f, 0, -2), 0.5f, new Dielectic(1.5f)));
+        world.addElements(new Sphere(new Vec3(0.0f, 0.0f, -1.0f), 0.5f, new Lambertian(new Vec3(0.1f, 0.2f, 0.5f))));
+        world.addElements(new Sphere(new Vec3(0.0f, -100.5f, -1.0f), 100f, new Lambertian(new Vec3(0.8f, 0.8f, 0.0f))));
+        world.addElements(new Sphere(new Vec3(1, 0, -1), 0.5f, new Metal(new Vec3(0.8f, 0.6f, 0.2f), 0.1f)));
+        world.addElements(new Sphere(new Vec3(-1, 0, -1), 0.5f, new Dielectic(1.5f)));
 
         float aspect = (float) this.IM_W / (float) this.IM_H;
-        Camera camera = new Camera(new Vec3(2, 2, 1), new Vec3(0, 0, -1), new Vec3(0, 1, 0), 40, aspect);
+        Camera camera = new Camera(new Vec3(-2, 2, 1), new Vec3(0, 0, -1), new Vec3(0, 1, 0), 90, aspect);
         // Camera camera = new Camera();
 
         int ns = 100; // 采样次数 消锯齿
@@ -51,6 +51,8 @@ public class Display extends com.testraytrace.ch9.Display {
         }
 
     }
+
+   
 
     private Display(String imgName) {
         super(imgName);

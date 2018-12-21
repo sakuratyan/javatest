@@ -25,12 +25,18 @@ public class Camera {
         this.world = world;
     }
 
+    public static void main(String[] args) {
+        Camera c = new Camera(new Vec3(0,0,-1), new Vec3(0, 0, -1), new Vec3(0, 1, 0), 90, 2);
+        System.out.println(c.lower_left);
+        System.out.println(c.horizontal);
+        System.out.println(c.vertical);
+    }
      /**
      *
      * @param lookfrom 相机位置
      * @param lookat 观察点
      * @param vup 相机的倾斜方向 view up
-     * @param vfov 视野 field of view
+     * @param vfov 视野 field of view 区间[0,360]
      * @param aspect 宽高比
      */
     public Camera(Vec3 lookfrom, Vec3 lookat, Vec3 vup, float vfov, float aspect){
@@ -56,7 +62,7 @@ public class Camera {
      */
     public Ray GetRay(float u, float v)
     {
-        return new Ray(origin, lower_left.Add(horizontal.Scale(u)).Add(vertical.Scale(v)));
+        return new Ray(origin, lower_left.Add(horizontal.Scale(u)).Add(vertical.Scale(v).Subtract(origin)));
     }
 
     /**
@@ -74,6 +80,11 @@ public class Camera {
         float t = 0.5f * (unit_dir.y() + 1.0f);     //原本范围为[-1,1]调整为[0,1]
         return new Vec3(1.0f, 1.0f, 1.0f).Scale(1.0f - t).Add(new Vec3(0.5f, 0.7f, 1.0f).Scale(t));
         //返回背景(1.0-t)*vec3(1.0, 1.0, 1.0) + t*vec3(0.5, 0.7, 1.0); 沿着y轴线性插值，返回的颜色介于白色与天蓝色之间
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 
 }
