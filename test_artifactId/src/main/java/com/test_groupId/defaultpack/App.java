@@ -9,7 +9,7 @@ import java.util.Date;
 //import com.test_groupId.gui.*;
 import com.gamesnake.*;
 import com.test_groupId.teststring.*;
-import com.testraytrace.ch3.*;
+import com.testraytrace.mycode.*;
 import com.algorithm.*;
 //import com.test_groupId.innerclass.*;
 
@@ -26,9 +26,8 @@ public class App {
         // redsysout("redsysout.txt");
         // new GameSnake().launch();
         // new Yard().launch();
-        System.out.println(new SimpleDateFormat().format(new Date().getTime()));
         // TestFile f = new TestFile("C:\\Users\\11054\\WOrkSpace");
-
+        new MyImage().launch();
         // String[] s = { "123", "12", "2", "4", "12321" };
 
         // TestChain t= new TestChain();
