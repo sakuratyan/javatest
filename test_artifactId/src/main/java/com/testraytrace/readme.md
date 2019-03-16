@@ -1,5 +1,9 @@
+> 左右旋转没问题,上下旋转莫名其妙
 
-![ch12](image/ch12.2.png "ch12")
+![](https://github.com/hitori-Janai/NOTES/blob/master/Ray%20tracing%20in%20one%20weekend/%E8%BD%AC%E7%90%83.gif )
+
+![](https://github.com/sakuratyan/javatest/blob/master/test_artifactId/src/main/java/com/testraytrace/.image/ch12.2.png )
+
 
 
 参考：
